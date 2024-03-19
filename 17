@@ -1,0 +1,24 @@
+def ss(n):
+    st = hex(n)[2:]
+    if "AA" in str(st):
+        return True
+    return False
+
+
+
+kol = 0
+maxi = 0
+maxt = 0
+file = open("17-304.txt")
+sp = list()
+for s in file:
+    sp.append(s)
+for i in range(len(sp)):
+    if int(sp[i]) % 246 == 0:
+        maxi = max(maxi,int(sp[i]))
+for t in range(len(sp) - 1):
+    if ss(int(sp[t])) and ss(int(sp[t+1])) and (int(sp[t]) + int(sp[t+1])) < maxi:
+        kol = kol + 1
+        maxt = max(maxt,int(sp[t]) + int(sp[t+1]))
+print(kol,maxt)
+    
