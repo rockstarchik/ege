@@ -1,24 +1,21 @@
-def ss(n):
-    st = hex(n)[2:]
-    if "AA" in str(st):
-        return True
-    return False
-
-
-
-kol = 0
+file = open("24-225.txt")
+s = file.read()
 maxi = 0
-maxt = 0
-file = open("17-304.txt")
-sp = list()
-for s in file:
-    sp.append(s)
-for i in range(len(sp)):
-    if int(sp[i]) % 246 == 0:
-        maxi = max(maxi,int(sp[i]))
-for t in range(len(sp) - 1):
-    if ss(int(sp[t])) and ss(int(sp[t+1])) and (int(sp[t]) + int(sp[t+1])) < maxi:
-        kol = kol + 1
-        maxt = max(maxt,int(sp[t]) + int(sp[t+1]))
-print(kol,maxt)
-    
+sch = 0
+pch = 1
+for i in range(len(s)-1):
+    for j in range(i + 1,len(s)):
+        if s[i] == "R" and s[j] == "R":
+            srez = s[i+1:j]
+            if len(srez) == 11:
+                if srez[0] == 3 and srez[1] == 2 and srez[2] == 2 and srez[5] == 5 and srez[6] == 5 and srez[10] == 8 and srez[11] == 9:
+                    maxi = max(maxi,int(srez))
+for i in range(len(maxi)):
+    if maxi[i] % 2 == 0:
+        sch = sch + maxi[i]
+    else:
+        pch = pch * maxi[i]
+print(pch,sch)
+
+
+
