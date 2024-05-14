@@ -1,0 +1,28 @@
+file = open("test.txt")
+k = 3
+kol = 0
+maxi = 0
+sp = []
+for s in file:
+    sp.append(int(s))
+summ = [sp[0]]
+for i in range(1, len(sp)):
+    summ.append(summ[-1] + sp[i])
+ost = [-1]* 39
+ind = [-1] * 39
+ost[0] = 0
+for i in range(len(summ)):
+    o = summ[i] % 39
+    if ost[o] == -1:
+        ost[o] == summ[i]
+        ind[o] = i
+    else:
+        if summ[i] - ost[o] >= maxi and i - ind[o] <= 3:
+            maxi = summ[i] - ost[o]
+            kol = kol + 1
+print(kol)
+            
+
+    
+    
+                
