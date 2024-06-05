@@ -1,0 +1,15 @@
+def kal(beg, end, hod):
+    if beg > end:
+        return False
+    if beg == end:
+        return True
+    if beg < end:
+        return kal(beg + 1,end,hod + 1) + kal(beg * 2 - 3, end, hod + 1)
+
+
+kol = 0
+for i in range(1000):
+    if kal(3,i,0) and hod == 12:
+        kol = kol + 1
+print(kol)
+        
